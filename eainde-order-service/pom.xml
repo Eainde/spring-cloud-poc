@@ -16,6 +16,7 @@
         <hibernate-hikaricp.version>5.3.7.Final</hibernate-hikaricp.version>
         <HikariCP.version>3.2.0</HikariCP.version>
         <spring-cloud.version>Greenwich.M3</spring-cloud.version>
+        <spotless.version>2.9.0</spotless.version>
     </properties>
 
     <dependencyManagement>
@@ -35,13 +36,13 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
+           <!-- <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
+            </dependency>-->
         </dependencies>
     </dependencyManagement>
 
@@ -49,10 +50,6 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-sleuth</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -117,5 +114,35 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <finalName>app</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.yml</include>
+                    <include>**/*.sql</include>
+                </includes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>${spotless.version}</version>
+                <executions>
+                    <execution>
+                        <id>apply</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>apply</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
