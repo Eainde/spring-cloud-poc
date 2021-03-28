@@ -2,6 +2,7 @@ package com.eainde.customer.controller;
 
 import com.eainde.customer.dto.UserDto;
 import com.netflix.discovery.EurekaClient;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -29,11 +31,16 @@ public class CustomerController {
         this.restTemplate=restTemplate;
     }
 
+    @HystrixCommand(fallbackMethod = "findAllFallback")
     @GetMapping(value="/user", produces = "application/json")
     public ResponseEntity<List<UserDto>> findAll(){
         //String uri=client.getApplication("eainde-user-service").getInstances().get(0).getHomePageUrl();
        UserDto[] users=restTemplate.getForObject("http://eainde-user-service"+"/user/",UserDto[].class);
         return new ResponseEntity<>(Arrays.asList(users), HttpStatus.OK);
+    }
+
+    public ResponseEntity<List<UserDto>> findAllFallback(){
+        return new ResponseEntity<>(new ArrayList<>(), HttpStatus.OK);
     }
 
 }
