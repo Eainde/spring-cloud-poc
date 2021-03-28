@@ -49,10 +49,11 @@ public class CustomerController {
     @GetMapping(value="/", produces = "application/json")
     public ResponseEntity<CustomerDto> findUserOrders() throws ExecutionException, InterruptedException {
         //String uri=client.getApplication("eainde-user-service").getInstances().get(0).getHomePageUrl();
+        // Async call is happening here. It will not wait users service to complete to call order service.
         Future<List<UserDto>> users=service.obtainUser();
         Future<List<OrderDto>> orders=service.obtainOrder();
         CustomerDto customer=new CustomerDto();
-        // It will wait when .get is called to get the result. It will not proceed further until get is completed.
+        // It will wait when get() is called to get the result. It will not proceed further until get is completed.
         customer.setOrder(orders.get());
         customer.setUser(users.get());
         return new ResponseEntity<>(customer, HttpStatus.OK);
