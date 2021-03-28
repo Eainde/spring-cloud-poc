@@ -1,4 +1,4 @@
-# Eainde Customer Service
+# Customer Service
 > Click :star:if you like the project. Pull Request are highly appreciated.
 
 This microservice use netflix ribbon load balancer to hit two different instances of user service. 

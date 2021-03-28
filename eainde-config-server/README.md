@@ -1,4 +1,4 @@
-# Eainde Config Server
+# Config Server
 **Why do we need a config server?**
 
 Let us consider the configuration details of our microservices. All our microservices have the below configuration, apart from few properties like application name and port.
