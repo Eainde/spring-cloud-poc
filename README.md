@@ -1,5 +1,5 @@
 # Spring Cloud Proof of Concept
-> Click :star: if you like the project. Pull Request are highly appreciated.
+> Click :star:   if you like the project. Pull Request are highly appreciated.
 
 This POC covers below topics:
 * Store configuration details on the cloud using CloudConfig
