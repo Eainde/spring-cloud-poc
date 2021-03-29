@@ -8,4 +8,9 @@ INFO [eainde-customer-service,6061b234f3d20ab7873279f14d9f8427,2850620477a7a886,
 ```
 
 # Zipkin Server
-Sleuth generates traceId and spanId. But it is difficult to make use of data in its raw form. This is where Zipkin is used. Zipkin is a distributed tracing system that allows us to gather information on the trace of a request. By adding an appropriate dependency, we make sleuth send all its details to a Zipkin server. The Zipkin server has an memoru DB where details are stored. Zipkin has a powerful UI application, which allows us to analyze the logs and take appropriate action. 
+Sleuth generates traceId and spanId. But it is difficult to make use of data in its raw form. This is where Zipkin is used. Zipkin is a distributed tracing system that allows us to gather information on the trace of a request. By adding an appropriate dependency, we make sleuth send all its details to a Zipkin server. The Zipkin server has an memoru DB where details are stored. Zipkin has a powerful UI application, which allows us to analyze the logs and take appropriate action.
+
+**Zipki-UI url**
+```
+              http://localhost:4444/zipkin/
+```
