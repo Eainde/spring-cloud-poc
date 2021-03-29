@@ -38,7 +38,7 @@ public class CustomerController {
         this.service=service;
     }
 
-    @HystrixCommand(fallbackMethod = "findAllFallback")
+    //@HystrixCommand(fallbackMethod = "findAllFallback")
     @GetMapping(value="/user", produces = "application/json")
     public ResponseEntity<List<UserDto>> findAll() throws ExecutionException, InterruptedException {
         //String uri=client.getApplication("eainde-user-service").getInstances().get(0).getHomePageUrl();

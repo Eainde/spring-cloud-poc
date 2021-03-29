@@ -36,3 +36,18 @@ Fallback executes when:
 * An error occurs
 * A timeout occurs
 * Circuit opens
+
+## Declarative Client(Feign)
+We have been using the Rest Template for making our calls to other services but when used with LoadBalancing APIs and Circuit Breaker APIs, it becomes cumbersome. Netflix provides an easier to use client called Feign. The Feign client automatically integrates with Load balancing APIs and Circuit Breaker APIs to provide load balancing and fallback mechanism.
+
+Few drawbacks with RestTemplate are:
+* You have to be aware of the various methods of the Rest Template to use it.
+* You need a separate bean for Load balancing
+* You need a separate service for Circuit breaker
+* The header details of a request from Zuul are not forwarded to the other microservices using RestTemplate
+
+Hence, we need a form of contacting other microservices which makes it eaiser by avoiding the above mentioned problems.
+
+**Feign** is a declarative clent from Netflix. It is decalarative becuase we as developers declare the API for contacting other microservices. We define the riles in the form of owr own interfaces. At runtime, Feign will create an implementation for our interfaces automatically. Thus with minimal code and self made interfaces, we can have greater control over how one microservice communicates with the other.
+
+**Feign** autometically uses Load balancer API. Thus all calls are automatically load balanced. Feign also works well with Circuitbreaker APIs. With appopirate dependency and configuration, Feign will automatically use a circuit breaker and fallback for all the calls without the need for a separate service class.

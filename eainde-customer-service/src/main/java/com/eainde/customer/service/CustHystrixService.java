@@ -1,5 +1,6 @@
 package com.eainde.customer.service;
 
+import com.eainde.customer.config.CustFeign;
 import com.eainde.customer.dto.OrderDto;
 import com.eainde.customer.dto.UserDto;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
@@ -17,9 +18,12 @@ import java.util.concurrent.Future;
 @Service
 public class CustHystrixService {
     private final RestTemplate restTemplate;
+    private final CustFeign client;
 
-    CustHystrixService(final RestTemplate restTemplate){
+    CustHystrixService(final RestTemplate restTemplate,
+                       final CustFeign client){
         this.restTemplate=restTemplate;
+        this.client=client;
     }
 
     @HystrixCommand(fallbackMethod = "findAllFallback")
@@ -27,7 +31,8 @@ public class CustHystrixService {
         return new AsyncResult<List<UserDto>>() {
             @Override
             public List<UserDto> invoke() {
-                UserDto[] users=restTemplate.getForObject("http://eainde-user-service"+"/user/",UserDto[].class);
+                //UserDto[] users=restTemplate.getForObject("http://eainde-user-service"+"/user/",UserDto[].class);
+                UserDto[] users=client.getUsers();
                 return Arrays.asList(users);
             }
         };
