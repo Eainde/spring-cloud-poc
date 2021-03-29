@@ -14,3 +14,8 @@ In this pattern, a service registers itself with a centeral server called the Se
 Thus, even if one of the services were to get redeployed at a different host and port, the other services need not worry about about it. When the service gets redeployed, it would simply update its information in the service registry again. The other services would discover its updated details through the service registry.
 
 There are many service registry solutions like Netflix Eureka, Zookeeper, Consul etc.
+
+**Eureka Server UI url**
+```
+                http://localhost:2222/
+```
