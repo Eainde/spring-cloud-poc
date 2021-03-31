@@ -30,7 +30,7 @@ public class OrderController {
     @PostMapping(value="/", produces = "application/json")
     public ResponseEntity<Void> add(@RequestBody Order order){
         service.add(order);
-        return new ResponseEntity<>( HttpStatus.OK);
+    return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping(value="/", produces = "application/json")

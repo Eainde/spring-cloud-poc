@@ -6,48 +6,50 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="userOrder")
+@Table(name = "userOrder")
 public class Order {
-    @Id
-    @Column(name="id")
-    private int orderId;
-    @Column(name="desc")
-    private String description;
-    @Column(name="country")
-    private String country;
-    @Column(name="quantity")
-    private int quantity;
+  @Id
+  @Column(name = "id")
+  private int orderId;
 
+  @Column(name = "desc")
+  private String description;
 
-    public int getOrderId() {
-        return orderId;
-    }
+  @Column(name = "country")
+  private String country;
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
-    }
+  @Column(name = "quantity")
+  private int quantity;
 
-    public String getDescription() {
-        return description;
-    }
+  public int getOrderId() {
+    return orderId;
+  }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+  public void setOrderId(int orderId) {
+    this.orderId = orderId;
+  }
 
-    public String getCountry() {
-        return country;
-    }
+  public String getDescription() {
+    return description;
+  }
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-    public int getQuantity() {
-        return quantity;
-    }
+  public String getCountry() {
+    return country;
+  }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
+  public void setCountry(String country) {
+    this.country = country;
+  }
+
+  public int getQuantity() {
+    return quantity;
+  }
+
+  public void setQuantity(int quantity) {
+    this.quantity = quantity;
+  }
 }

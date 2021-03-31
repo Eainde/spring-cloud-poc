@@ -27,51 +27,54 @@ import java.util.stream.Collectors;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
-        basePackages = "com.eainde.order.repository",
-        entityManagerFactoryRef = "entityManager",
-        transactionManagerRef = "transactionManager"
-)
+    basePackages = "com.eainde.order.repository",
+    entityManagerFactoryRef = "entityManager",
+    transactionManagerRef = "transactionManager")
 public class DatabaseConfiguration {
-    @Primary
-    @Bean
-    @ConfigurationProperties("spring.datasource")
-    public DataSourceProperties dataSourceProperties(){
-        return new DataSourceProperties();
-    }
+  @Primary
+  @Bean
+  @ConfigurationProperties("spring.datasource")
+  public DataSourceProperties dataSourceProperties() {
+    return new DataSourceProperties();
+  }
 
-    @Primary
-    @Bean
-    @ConfigurationProperties("spring.datasource.configuration")
-    public HikariDataSource dataSource(){
-        return dataSourceProperties().initializeDataSourceBuilder().type(HikariDataSource.class).build();
-    }
+  @Primary
+  @Bean
+  @ConfigurationProperties("spring.datasource.configuration")
+  public HikariDataSource dataSource() {
+    return dataSourceProperties()
+        .initializeDataSourceBuilder()
+        .type(HikariDataSource.class)
+        .build();
+  }
 
-    @Primary
-    @Bean(name="entityManager")
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder){
-        return builder.dataSource(dataSource())
-                .properties(hibernateProperties())
-                .packages("com.eainde.order.entity")
-                .persistenceUnit("pu")
-                .build();
-    }
+  @Primary
+  @Bean(name = "entityManager")
+  public LocalContainerEntityManagerFactoryBean entityManagerFactory(
+      EntityManagerFactoryBuilder builder) {
+    return builder
+        .dataSource(dataSource())
+        .properties(hibernateProperties())
+        .packages("com.eainde.order.entity")
+        .persistenceUnit("pu")
+        .build();
+  }
 
-    @Primary
-    @Bean(name="transactionManager")
-    public PlatformTransactionManager transactionManager(@Qualifier("entityManager") EntityManagerFactory entityManagerFactory){
-        return new JpaTransactionManager(entityManagerFactory);
-    }
+  @Primary
+  @Bean(name = "transactionManager")
+  public PlatformTransactionManager transactionManager(
+      @Qualifier("entityManager") EntityManagerFactory entityManagerFactory) {
+    return new JpaTransactionManager(entityManagerFactory);
+  }
 
-    private Map hibernateProperties(){
-        Resource resource= new ClassPathResource("hibernate.properties");
-        try{
-            Properties properties= PropertiesLoaderUtils.loadProperties(resource);
-            return properties
-                    .entrySet()
-                    .stream()
-                    .collect(Collectors.toMap(e-> e.getKey().toString(), e-> e.getValue()));
-        }catch (IOException e){
-            return new HashMap();
-        }
+  private Map hibernateProperties() {
+    Resource resource = new ClassPathResource("hibernate.properties");
+    try {
+      Properties properties = PropertiesLoaderUtils.loadProperties(resource);
+      return properties.entrySet().stream()
+          .collect(Collectors.toMap(e -> e.getKey().toString(), e -> e.getValue()));
+    } catch (IOException e) {
+      return new HashMap();
     }
+  }
 }
