@@ -9,6 +9,6 @@ import java.util.List;
 @FeignClient("eainde-user-service")
 public interface CustFeign {
 
-    @RequestMapping(value="/user/")
+    @RequestMapping(value = "/user/")
     UserDto[] getUsers();
 }

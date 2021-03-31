@@ -8,8 +8,9 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class CustomerConfig {
 
-    @Bean @LoadBalanced
-    RestTemplate restTemplate(){
+    @Bean
+    @LoadBalanced
+    RestTemplate restTemplate() {
         return new RestTemplate();
     }
 }

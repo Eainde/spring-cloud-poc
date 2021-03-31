@@ -34,25 +34,25 @@ public class CustomerController {
     // using this Eureka client we can information of the instance
     private final EurekaClient client;*/
 
-    CustomerController(final CustHystrixService service){
-        this.service=service;
+    CustomerController(final CustHystrixService service) {
+        this.service = service;
     }
 
     //@HystrixCommand(fallbackMethod = "findAllFallback")
-    @GetMapping(value="/user", produces = "application/json")
+    @GetMapping(value = "/user", produces = "application/json")
     public ResponseEntity<List<UserDto>> findAll() throws ExecutionException, InterruptedException {
         //String uri=client.getApplication("eainde-user-service").getInstances().get(0).getHomePageUrl();
-       return new ResponseEntity<>(service.obtainUser().get(), HttpStatus.OK);
+        return new ResponseEntity<>(service.obtainUser().get(), HttpStatus.OK);
     }
 
 
-    @GetMapping(value="/", produces = "application/json")
+    @GetMapping(value = "/", produces = "application/json")
     public ResponseEntity<CustomerDto> findUserOrders() throws ExecutionException, InterruptedException {
         //String uri=client.getApplication("eainde-user-service").getInstances().get(0).getHomePageUrl();
         // Async call is happening here. It will not wait users service to complete to call order service.
-        Future<List<UserDto>> users=service.obtainUser();
-        Future<List<OrderDto>> orders=service.obtainOrder();
-        CustomerDto customer=new CustomerDto();
+        Future<List<UserDto>> users = service.obtainUser();
+        Future<List<OrderDto>> orders = service.obtainOrder();
+        CustomerDto customer = new CustomerDto();
         // It will wait when get() is called to get the result. It will not proceed further until get is completed.
         customer.setOrder(orders.get());
         customer.setUser(users.get());
