@@ -8,7 +8,7 @@ import zipkin2.server.internal.EnableZipkinServer;
 @SpringBootApplication(scanBasePackages = {"com.eainde.zipkin"})
 @EnableZipkinServer
 public class Application {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
 }
