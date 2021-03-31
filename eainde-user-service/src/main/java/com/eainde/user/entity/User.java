@@ -6,16 +6,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class User {
     @Id
-    @Column(name="id")
+    @Column(name = "id")
     private int userId;
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
-    @Column(name="country")
+    @Column(name = "country")
     private String country;
-    @Column(name="age")
+    @Column(name = "age")
     private int age;
 
     public int getUserId() {

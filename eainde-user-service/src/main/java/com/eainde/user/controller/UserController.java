@@ -13,28 +13,28 @@ import java.util.List;
 public class UserController {
     private final UserService service;
 
-    UserController(final UserService service){
-        this.service=service;
+    UserController(final UserService service) {
+        this.service = service;
     }
 
-    @GetMapping(value="/{id}", produces = "application/json")
-    public ResponseEntity<User> findById(@PathVariable int id){
+    @GetMapping(value = "/{id}", produces = "application/json")
+    public ResponseEntity<User> findById(@PathVariable int id) {
         return new ResponseEntity<>(service.findById(id), HttpStatus.OK);
     }
 
-    @GetMapping(value="/", produces = "application/json")
-    public ResponseEntity<List<User>> findAll(){
+    @GetMapping(value = "/", produces = "application/json")
+    public ResponseEntity<List<User>> findAll() {
         return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
     }
 
-    @PostMapping(value="/", produces = "application/json")
-    public ResponseEntity<Void> add(@RequestBody User user){
+    @PostMapping(value = "/", produces = "application/json")
+    public ResponseEntity<Void> add(@RequestBody User user) {
         service.add(user);
-        return new ResponseEntity<>( HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping(value="/", produces = "application/json")
-    public ResponseEntity<User> update(@RequestBody User user){
+    @PutMapping(value = "/", produces = "application/json")
+    public ResponseEntity<User> update(@RequestBody User user) {
         return new ResponseEntity<>(service.update(user), HttpStatus.OK);
     }
 }

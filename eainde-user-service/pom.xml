@@ -116,7 +116,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-       <dependency>
+        <dependency>
             <groupId>com.diffplug.spotless</groupId>
             <artifactId>spotless-maven-plugin</artifactId>
             <version>${spotless.version}</version>
