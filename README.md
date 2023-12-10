@@ -10,3 +10,5 @@ This POC covers below topics:
 * Create an API gateway using Zuul and Spring cloud gateway
 * Simplify REST calls through Feign
 * Monitor your microservices through Turbine, Sleuth, Zipkin and Prometheus
+
+* https://piotrminkowski.com/2019/12/06/spring-boot-best-practices-for-microservices/
