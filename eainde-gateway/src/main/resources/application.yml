@@ -25,19 +25,3 @@ spring:
         uri: localhost:8443
         predicates:
         - Path=/user
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health, info
-  tracing:
-    sampling:
-      probability: 1.0
-
-
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:2222/eureka
