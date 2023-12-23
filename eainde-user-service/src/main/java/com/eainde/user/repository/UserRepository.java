@@ -1,16 +1,17 @@
 package com.eainde.user.repository;
 
 import com.eainde.user.entity.User;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
 public class UserRepository {
-  @PersistenceContext private final EntityManager entityManager;
+  @PersistenceContext
+  private final EntityManager entityManager;
 
   UserRepository(final EntityManager entityManager) {
     this.entityManager = entityManager;

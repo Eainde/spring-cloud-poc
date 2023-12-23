@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.eainde</groupId>
+    <artifactId>spring-cloud-poc</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>eainde-config-server</module>
+        <module>eainde-customer-service</module>
+        <module>eainde-discovery-server</module>
+        <module>eainde-order-service</module>
+        <module>eainde-user-service</module>
+        <module>eainde-gateway</module>
+    </modules>
+
+
+</project>

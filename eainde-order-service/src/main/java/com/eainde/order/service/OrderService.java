@@ -4,7 +4,6 @@ import com.eainde.order.entity.Order;
 import com.eainde.order.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Service

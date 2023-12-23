@@ -1,0 +1,43 @@
+server:
+  port: 3333
+
+spring:
+  config:
+    import: configserver:http://localhost:1111
+  application:
+    name: eainde-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+      routes:
+      - id: EAINDE-CUSTOMER-SERVICE
+        uri: localhost:8445
+        predicates:
+        - Path=/customer
+      - id: EAINDE-ORDER-SERVICE
+        uri: localhost:8444
+        predicates:
+        - Path=/order
+      - id: EAINDE-USER-SERVICE
+        uri: localhost:8443
+        predicates:
+        - Path=/user
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  tracing:
+    sampling:
+      probability: 1.0
+
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:2222/eureka

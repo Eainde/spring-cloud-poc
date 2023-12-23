@@ -1,18 +1,15 @@
 package com.eainde.order.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "userOrder")
+@Table(name = "USER_ORDER")
 public class Order {
   @Id
-  @Column(name = "id")
+  @Column(name = "order_id")
   private int orderId;
 
-  @Column(name = "desc")
+  @Column(name = "description")
   private String description;
 
   @Column(name = "country")
