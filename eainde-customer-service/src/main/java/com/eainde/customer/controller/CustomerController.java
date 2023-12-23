@@ -5,14 +5,13 @@ import com.eainde.customer.dto.OrderDto;
 import com.eainde.customer.dto.UserDto;
 import com.eainde.customer.service.CustomerService;
 
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 @RestController
 @RequestMapping("/customer")

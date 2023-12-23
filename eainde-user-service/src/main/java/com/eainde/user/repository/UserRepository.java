@@ -1,12 +1,12 @@
 package com.eainde.user.repository;
 
 import com.eainde.user.entity.User;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import java.util.List;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Repository
 public class UserRepository {

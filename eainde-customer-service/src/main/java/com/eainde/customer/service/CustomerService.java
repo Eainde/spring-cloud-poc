@@ -4,13 +4,12 @@ import com.eainde.customer.config.UserFeign;
 import com.eainde.customer.dto.OrderDto;
 import com.eainde.customer.dto.UserDto;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 @Service
 public class CustomerService {
