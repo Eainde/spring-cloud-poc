@@ -2,9 +2,9 @@ package com.eainde.user.service;
 
 import com.eainde.user.entity.User;
 import com.eainde.user.repository.UserRepository;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
